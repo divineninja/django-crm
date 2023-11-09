@@ -24,7 +24,7 @@ class Question(models.Model):
     pub_date = models.DateTimeField('date published')
 
     def __str__(self):
-        return self.question_text
+        return self.question_code
 
 
 class Campaign(models.Model):
@@ -46,7 +46,7 @@ class Campaign(models.Model):
 class Condition(models.Model):
     question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='conditions')
     parent_question = models.ForeignKey('Question', on_delete=models.CASCADE, related_name='dependent_conditions')
-    parent_answer = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    parent_answer = models.ManyToManyField(Choice)
 
     def __str__(self):
         return f"{self.question} depends on {self.parent_question}"
