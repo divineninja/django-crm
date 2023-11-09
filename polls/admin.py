@@ -3,6 +3,13 @@ from django.contrib import admin
 from .models import Question, Choice, Condition, Campaign
 
 
+class CustomAdminSite(admin.AdminSite):
+    site_header_color = '#2ecc71'  # Set your desired color
+
+
+admin_site = CustomAdminSite(name='customadmin')
+
+
 class ConditionInline(admin.TabularInline):
     model = Condition
     fk_name = 'question'  # Specify the ForeignKey to 'Question'
