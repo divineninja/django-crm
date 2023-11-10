@@ -6,7 +6,7 @@ from .models import Question, Choice, Condition
 class ChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Choice
-        fields = ['id', 'choice_text']
+        fields = ['choice_text']
 
 
 class ConditionSerializer(serializers.ModelSerializer):
